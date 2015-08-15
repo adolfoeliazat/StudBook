@@ -1,0 +1,13 @@
+{
+  "Example": {
+    "source": "/Users/annaershova/Flatiron/Hackathon/contracts/Example.sol",
+    "binary": "0x60606040525b5b600a8060136000396000f30060606040526008565b00",
+    "abi": [
+      {
+        "inputs": [],
+        "type": "constructor"
+      }
+    ],
+    "address": "0xd6f084ee15e38c4f7e091f8dd0fe6fe4a0e203ef"
+  }
+}
