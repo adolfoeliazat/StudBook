@@ -1,13 +1,37 @@
 {
-  "Example": {
-    "source": "/Users/annaershova/Flatiron/Hackathon/contracts/Example.sol",
-    "binary": "0x60606040525b5b600a8060136000396000f30060606040526008565b00",
+  "Horse": {
+    "source": "/Users/davidperel/code/Hackathon/StudBook/contracts/Horse.sol",
+    "binary": "0x60606040525b33600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908302179055505b610143806100406000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900480631a69523014610044578063893d20e81461005757610042565b005b61005560048035906020015061008e565b005b610062600450610114565b604051808273ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3373ffffffffffffffffffffffffffffffffffffffff16600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156101105780600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908302179055505b5b50565b6000600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050610140565b9056",
     "abi": [
+      {
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_newOwner"
+          }
+        ],
+        "constant": false,
+        "name": "transfer",
+        "outputs": [],
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "constant": false,
+        "name": "getOwner",
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "type": "function"
+      },
       {
         "inputs": [],
         "type": "constructor"
       }
     ],
-    "address": "0xc305c901078781c232a2a521c2af7980f8385ee9"
+    "address": "0x6bf68d0470d58001ca16f7b86f8c21d075f18bda"
   }
 }
