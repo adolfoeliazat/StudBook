@@ -2,24 +2,27 @@
 contract Horse {
     address mother;
     address father;
+
     address owner;
 
     uint8 gender; //-1 for unknown 0 for male, 1 for female
 
-  function Horse(address _owner) {
+
+  function Horse(address _owner, address _father, address _mother) {
     owner = _owner;
     gender = uint8(-1);
-  }
-
-  function transfer(address _newOwner) {
-    if (owner == msg.sender){
-      owner = _newOwner;
-    }
+    mother = _mother;
+    father = _father;
   }
 
   function getOwner() returns (address){
     return owner;
   }
+
+  function getGender() returns (uint8){
+    return gender;
+  }
+
 
   function setGender(uint8 g){
     if (owner != msg.sender) return; //Only owner can set gender
@@ -28,8 +31,10 @@ contract Horse {
     gender = g;
   }
 
-  function getGender() returns (uint8){
-    return gender;
+  function transfer(address _newOwner){
+    if (owner != msg.sender) return; //Only owner can transfer
+    owner = _newOwner;
   }
+
 }
 
