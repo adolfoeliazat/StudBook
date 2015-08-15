@@ -1,33 +1,65 @@
 var accs= web3.eth.accounts;
 console.log("accs:"+accs);
 
-var addr = Horse.deployed_address;
-console.log("Horse deployed to:"+addr);
-var horse=Horse.at(addr);
-//console.log(horse);
 var hrAddr = HorseRegistry.deployed_address;
-//console.log(typeof hrAddr);
 console.log("HorseRegistry deployed to:"+hrAddr);
 var horseRegistry=HorseRegistry.at(hrAddr);
 
-var ownerAddr;
+var firstAddr=accs[0];
 
-horse.getOwner.call()
-.then (function(_ownerAddr){
-	  console.log("ownerAddr:"+_ownerAddr);
-      ownerAddr = _ownerAddr;
-      return horse.registerIn(hrAddr);
+var horse0;
+var horse1;
+
+horseRegistry.getNumHorses.call(firstAddr)
+.then (function(_numHorses){
+    console.log("numHorses for "+firstAddr+":"+_numHorses);
+    return horseRegistry.addOutsideHorse();
 })
-.then(function(o){
-    console.log("registered! (tx:"+o+")");
-    return horseRegistry.getNumHorses.call(ownerAddr);
+.then (function(o){
+	console.log("addOutsideHorse! (tx:"+o+")");
+	return horseRegistry.addOutsideHorse();
+})
+.then (function(o){
+	console.log("addOutsideHorse! (tx:"+o+")");
+	return horseRegistry.getNumHorses.call(firstAddr);
 })
 .then (function(_numHorses){
-    console.log("numHorses for "+ownerAddr+":"+_numHorses);
-    return horseRegistry.getHorseByIndex.call(ownerAddr,0);
+    console.log("numHorses for "+firstAddr+":"+_numHorses);
+    return horseRegistry.getHorseByIndex.call(firstAddr,0);
 })
-.then (function(_horseAddr){
-    console.log("_horseAddr for "+ownerAddr+":"+_horseAddr);
+.then (function(_horseAddr0){
+	horse0=Horse.at(_horseAddr0);
+    console.log("_horseAddr0 for:"+_horseAddr0);
+    return horseRegistry.getHorseByIndex.call(firstAddr,1);
+})
+.then (function(_horseAddr1){
+	horse1=Horse.at(_horseAddr1);
+    console.log("_horseAddr1 for:"+_horseAddr1);
+    return horse0.getGender.call();
+})
+.then (function(_gender0){
+	console.log("gender for horse0:"+_gender0);
+    return horse0.setGender(0);
+})
+.then (function(o){
+	console.log("gender for horse0 seted. tx:"+0);
+   return horse0.getGender.call();
+})
+.then (function(_gender0){
+	console.log("gender for horse0:"+_gender0);
+    return horse1.getGender.call();
+})
+.then (function(_gender1){
+	console.log("gender for horse1:"+_gender1);
+    return horse1.setGender(1);
+})
+.then (function(o){
+	console.log("gender for horse1 seted. tx:"+0);
+   return horse1.getGender.call();
+})
+.then (function(_gender1){
+	console.log("gender for horse1:"+_gender1);
+    //return horse1.getGender.call();
 })
 .catch(function(e) {
    console.log(e);

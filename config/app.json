@@ -18,8 +18,7 @@
   },
   "deploy": [
     // Names of contracts that should be deployed to the network.
-    "HorseRegistry", 
-    "Horse"
+    "HorseRegistry"
   ],
   "rpc": {
     // Default RPC configuration.
