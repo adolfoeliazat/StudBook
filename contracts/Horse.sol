@@ -1,3 +1,5 @@
+import "HorseRegistry";
+
 contract Horse {
     address mother;
     address father;
@@ -5,9 +7,11 @@ contract Horse {
 
     //Constructor
   
-  function Horse() {
+  function Horse(address _hrAddr) {
     owner = msg.sender;
 
+    HorseRegistry(_hrAddr)
+      .addHorse(owner,address(this));
 
   }
   
@@ -21,6 +25,4 @@ contract Horse {
     return owner;
   }
 }
-
-
 
