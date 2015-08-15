@@ -5,5 +5,9 @@ contract HorseRegistry {
                               address _horse){
       horseOwners[_owner][horseOwners[_owner].length]=_horse;
     }
+
+    function getHorses(address _owner) returns (address[]){
+      return horseOwners[_owner];
+    }
 }
 

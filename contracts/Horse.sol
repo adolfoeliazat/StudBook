@@ -7,12 +7,13 @@ contract Horse {
 
     //Constructor
   
-  function Horse(address _hrAddr) {
+  function Horse() {
     owner = msg.sender;
+  }
 
+  function register(address _hrAddr){
     HorseRegistry(_hrAddr)
       .addHorse(owner,address(this));
-
   }
   
   function transfer(address _newOwner) {
