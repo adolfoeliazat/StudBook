@@ -16,6 +16,11 @@ var App  = React.createClass({displayName: 'App',
   		}
   	}.bind(this));
   },
+
+  openNewHorseModal: function() {
+  	this.refs.newHorseModal.open();
+  },
+
   render: function() {
     return (
       <body>
@@ -24,10 +29,12 @@ var App  = React.createClass({displayName: 'App',
           <ReactBootstrap.Row>
             <ReactBootstrap.Col md={12}>
               <MyHorses global={this.state}
-              			ref={'myHorses'}/>
+              			ref={'myHorses'}
+              			openNewHorseModal={this.openNewHorseModal}/>
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </div>
+        <NewHorseModal global={this.state} ref={'newHorseModal'}/>
       </body>
     );
   }

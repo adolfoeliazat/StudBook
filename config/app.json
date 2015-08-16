@@ -9,8 +9,10 @@
       "javascripts/bootstrap.min.js",
       "javascripts/react.js",
       "javascripts/react-bootstrap.min.js",
+      "javascripts/react-bootstrap-components.js",
       "javascripts/navigationBar.jsx",
       "javascripts/myHorses.jsx",
+      "javascripts/newHorseModal.jsx",
       "javascripts/app.jsx"
     ],
     "app.css": [
