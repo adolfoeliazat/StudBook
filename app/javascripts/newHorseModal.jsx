@@ -42,6 +42,7 @@ render: function() {
 
       <Modal.Body>
         <form>
+          <Label>Horse Name</Label>
         	<Input type="text" placeholder="Horse Name" ref='newHorseName' />
         </form>
       </Modal.Body>

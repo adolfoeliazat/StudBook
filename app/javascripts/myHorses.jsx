@@ -74,6 +74,7 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
       horses        : [],
       selectedHorseDefineGender : {},
       selectedHorseMoreInfo : {},
+      selectedHorseTransfer : {},
 
     };
   },
@@ -90,6 +91,13 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
     this.refs.moreInfoModal.open();
   },
 
+  openTransferModal: function(selHorse) {
+    this.setState({selectedHorseTransfer: selHorse});
+    console.log("transfering for: "+selHorse.name);
+    this.refs.transferModal.open();
+  },
+
+
   render: function() {
     var header="My Horses registered at " + this.props.global.horseRegistryAddr;
     return (
@@ -98,10 +106,10 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
         <HorseTable data={this.state.horses} 
               openDefineGenderModal={this.openDefineGenderModal}
               openMoreInfoModal={this.openMoreInfoModal}
-              />
+              openTransferModal={this.openTransferModal} />
         <ButtonToolbar>
           <Button bsStyle='primary' onClick={this.props.openNewHorseModal}>New Horse</Button>
-          <Button bsStyle='primary'>Newborn Horse</Button>
+          <Button bsStyle='primary' onClick={this.props.openNewBornHorseModal}>Newborn Horse</Button>
         </ButtonToolbar>
         <DefineGenderModal ref={'defineGenderModal'} 
             horse={this.state.selectedHorseDefineGender}
@@ -109,6 +117,11 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
 
         <MoreInfoModal ref={'moreInfoModal'} 
             horse={this.state.selectedHorseMoreInfo}/>
+
+        <TransferModal ref={'transferModal'} 
+            global={this.props.global}
+            horse={this.state.selectedHorseTransfer}
+            askForMyHorsesRefresh={this.getHorsesFromBlockchain}/>    
       </Panel> 
     );
   }

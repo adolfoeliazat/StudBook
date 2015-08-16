@@ -25,6 +25,10 @@ var App  = React.createClass({displayName: 'App',
   	this.refs.newHorseModal.open();
   },
 
+  openNewBornHorseModal: function() {
+  	this.refs.newBornHorseModal.open();
+  },
+
   render: function() {
     return (
       <body>
@@ -34,12 +38,17 @@ var App  = React.createClass({displayName: 'App',
             <ReactBootstrap.Col md={12}>
               <MyHorses global={this.state}
               			ref={'myHorses'}
-              			openNewHorseModal={this.openNewHorseModal}/>
+              			openNewHorseModal={this.openNewHorseModal}
+						openNewBornHorseModal={this.openNewBornHorseModal}
+              			/>
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </div>
         <NewHorseModal global={this.state} 
         				ref={'newHorseModal'}
+        				askForMyHorsesRefresh={this.refreshMyHorses}/>
+		<NewBornHorseModal global={this.state} 
+        				ref={'newBornHorseModal'}
         				askForMyHorsesRefresh={this.refreshMyHorses}/>
       </body>
     );

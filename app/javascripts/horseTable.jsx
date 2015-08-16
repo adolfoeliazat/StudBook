@@ -9,6 +9,10 @@ var HorseTable = React.createClass({displayName: 'HorseTable',
 		this.props.openMoreInfoModal(horse);
 	},
 
+	transfer: function(horse,e){
+		this.props.openTransferModal(horse);
+	},
+
 	render: function() {
 		if(this.props.data.length == 0) return (
 			<span>...</span>
@@ -28,9 +32,16 @@ var HorseTable = React.createClass({displayName: 'HorseTable',
 		        <td><EthAddr addr={horse.address}/></td>
 		        <td>{horse.name}</td>
 		        <td>{gender}</td>
-		        <td><Button bsStyle='primary' bsSize='xsmall' onClick={this.moreInfo.bind(this,horse)}>
-	  	  				<Glyphicon glyph='info-sign' /> More info
-  	  				</Button></td>
+		        <td>
+		        	<ButtonToolbar>
+			        	<Button bsStyle='primary' bsSize='xsmall' onClick={this.moreInfo.bind(this,horse)}>
+		  	  				<Glyphicon glyph='info-sign' /> More info
+	  	  				</Button>
+	  	  				<Button bsStyle='success' bsSize='xsmall' onClick={this.transfer.bind(this,horse)}>
+		  	  				<Glyphicon glyph='export' /> Transfer
+	  	  				</Button>
+  	  				</ButtonToolbar>
+  				</td>
 		    </tr>
 	      );
 	    }.bind(this));

@@ -65,8 +65,8 @@ contract HorseRegistry {
     function registerTransfer(address _horse, address _newOwner){
     	Horse horse = Horse(_horse);
     	
-    	//Check ownership
-		if(horse.getOwner() != msg.sender) return;
+    	//Check registered ownership
+		if(horses[_horse].registeredOwner != msg.sender) return;
 
 		bytes32 name=horses[_horse].name;
 

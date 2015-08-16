@@ -9,4 +9,5 @@ var Input = ReactBootstrap.Input;
 var Table = ReactBootstrap.Table;
 var Glyphicon = ReactBootstrap.Glyphicon;
 var Label = ReactBootstrap.Label;
+var Alert = ReactBootstrap.Alert;
 

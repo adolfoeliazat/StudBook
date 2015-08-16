@@ -15,8 +15,10 @@
       "javascripts/horseTable.jsx",
       "javascripts/myHorses.jsx",
       "javascripts/newHorseModal.jsx",
+      "javascripts/newBornHorseModal.jsx",
       "javascripts/defineGenderModal.jsx",
       "javascripts/moreInfoModal.jsx",
+      "javascripts/transferModal.jsx",
       "javascripts/app.jsx"
     ],
     "app.css": [
