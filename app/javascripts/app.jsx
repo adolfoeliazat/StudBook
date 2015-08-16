@@ -12,9 +12,13 @@ var App  = React.createClass({displayName: 'App',
   	web3.eth.getAccounts(function(error,result){
   		if(error == null){
   			this.setState({account: result[0]});
-  			this.refs.myHorses.getHorsesFromBlockchain();
+  			this.refreshMyHorses();
   		}
   	}.bind(this));
+  },
+
+  refreshMyHorses: function() {
+	this.refs.myHorses.getHorsesFromBlockchain();
   },
 
   openNewHorseModal: function() {
@@ -34,7 +38,9 @@ var App  = React.createClass({displayName: 'App',
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </div>
-        <NewHorseModal global={this.state} ref={'newHorseModal'}/>
+        <NewHorseModal global={this.state} 
+        				ref={'newHorseModal'}
+        				askForMyHorsesRefresh={this.refreshMyHorses}/>
       </body>
     );
   }
