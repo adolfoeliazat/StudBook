@@ -56,6 +56,7 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
         if(gender == 1){
           horse.gender = 'Female';
         }
+        horse.genderCode = gender;
 
         var horses = this.state.horses;
         horses[_index] = horse;
@@ -137,7 +138,8 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
                 askForMyHorsesRefresh={this.getHorsesFromBlockchain}/>
         <NewBornHorseModal
                 global={this.props.global}
-                  ref={'newBornHorseModal'}
+                ref={'newBornHorseModal'}
+                myHorses={this.state.horses} 
                 askForMyHorsesRefresh={this.getHorsesFromBlockchain}/>
       </Panel>
 

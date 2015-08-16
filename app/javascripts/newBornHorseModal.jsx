@@ -40,6 +40,22 @@ var NewBornHorseModal = React.createClass({displayName: 'NewBornHorseModal',
   },
 
 render: function() {
+      var myMaleHorsesOption = this.props.myHorses.map(function (horse) {
+        if(horse.genderCode == 0){
+          return (
+            <option key={horse.index} value={horse.address}>{horse.name} {horse.gender}</option>
+          );
+        }
+      });
+
+      var myFemaleHorsesOption = this.props.myHorses.map(function (horse) {
+        if(horse.genderCode == 1){
+          return (
+            <option key={horse.index} value={horse.address}>{horse.name} {horse.gender}</option>
+          );
+        }
+      });
+
     return (
 	<Modal show={this.state.showModal} onHide={this.close}>
       <Modal.Header closeButton>
@@ -51,9 +67,13 @@ render: function() {
           <Label>Horse Name</Label>
         	<Input type="text" placeholder="Horse Name" ref='newBornHorseName' />
           <Label>Horse Father Address</Label>
-          <Input type="text" placeholder="Father Address" ref='newBornHorseFather'/>
+          <Input type="select" placeholder="Father Address" ref='newBornHorseFather'>
+            {myMaleHorsesOption}
+          </Input>
           <Label>Horse Mother Address</Label>
-          <Input type="text" placeholder="Mother Address" ref='newBornHorseMother' />
+          <Input type="select" placeholder="Mother Address" ref='newBornHorseMother'>
+            {myFemaleHorsesOption}
+          </Input>
 
         </form>
       </Modal.Body>
