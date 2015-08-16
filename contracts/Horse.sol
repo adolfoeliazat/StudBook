@@ -23,6 +23,13 @@ contract Horse {
     return gender;
   }
 
+  function getFather() returns (address){
+    return father;
+  }
+
+  function getMother() returns (address){
+    return mother;
+  }
 
   function setGender(uint8 g){
     if (owner != msg.sender) return; //Only owner can set gender

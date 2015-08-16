@@ -16,6 +16,7 @@
       "javascripts/myHorses.jsx",
       "javascripts/newHorseModal.jsx",
       "javascripts/defineGenderModal.jsx",
+      "javascripts/moreInfoModal.jsx",
       "javascripts/app.jsx"
     ],
     "app.css": [

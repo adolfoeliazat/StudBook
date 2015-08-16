@@ -46,7 +46,7 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
         var h = Horse.at(horse.address)
         return h.getGender.call();
 
-    }.bind(this))
+    })
     .then ( function (_horseGender){
         //console.log(_horseGender);
         var gender = Number(_horseGender);
@@ -72,14 +72,22 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
   	return {
       numHorses     : 0,
       horses        : [],
-      selectedHorse : {}
+      selectedHorseDefineGender : {},
+      selectedHorseMoreInfo : {},
+
     };
   },
   
   openDefineGenderModal: function(selHorse) {
-    this.setState({selectedHorse: selHorse});
+    this.setState({selectedHorseDefineGender: selHorse});
     console.log("defining gender for: "+selHorse.name);
     this.refs.defineGenderModal.open();
+  },
+
+  openMoreInfoModal: function(selHorse) {
+    this.setState({selectedHorseMoreInfo: selHorse});
+    console.log("more info for: "+selHorse.name);
+    this.refs.moreInfoModal.open();
   },
 
   render: function() {
@@ -88,14 +96,19 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
       <Panel header={ header }>
         <p>Horses registered here: {this.state.numHorses}</p>
         <HorseTable data={this.state.horses} 
-              openDefineGenderModal={this.openDefineGenderModal}/>
+              openDefineGenderModal={this.openDefineGenderModal}
+              openMoreInfoModal={this.openMoreInfoModal}
+              />
         <ButtonToolbar>
           <Button bsStyle='primary' onClick={this.props.openNewHorseModal}>New Horse</Button>
           <Button bsStyle='primary'>Newborn Horse</Button>
         </ButtonToolbar>
         <DefineGenderModal ref={'defineGenderModal'} 
-            horse={this.state.selectedHorse}
+            horse={this.state.selectedHorseDefineGender}
             askForMyHorsesRefresh={this.getHorsesFromBlockchain}/>
+
+        <MoreInfoModal ref={'moreInfoModal'} 
+            horse={this.state.selectedHorseMoreInfo}/>
       </Panel> 
     );
   }

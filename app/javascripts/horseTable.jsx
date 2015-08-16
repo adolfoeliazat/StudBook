@@ -2,9 +2,11 @@
 var HorseTable = React.createClass({displayName: 'HorseTable',
   
 	defineGender: function(horse, e){
-		console.log("on horseTable.defineGender:");
-		console.log(horse);
 		this.props.openDefineGenderModal(horse);
+	},
+
+	moreInfo: function(horse,e){
+		this.props.openMoreInfoModal(horse);
 	},
 
 	render: function() {
@@ -26,7 +28,7 @@ var HorseTable = React.createClass({displayName: 'HorseTable',
 		        <td><EthAddr addr={horse.address}/></td>
 		        <td>{horse.name}</td>
 		        <td>{gender}</td>
-		        <td><Button bsStyle='primary' bsSize='xsmall'>
+		        <td><Button bsStyle='primary' bsSize='xsmall' onClick={this.moreInfo.bind(this,horse)}>
 	  	  				<Glyphicon glyph='info-sign' /> More info
   	  				</Button></td>
 		    </tr>

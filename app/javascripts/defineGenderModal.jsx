@@ -14,9 +14,8 @@ var DefineGenderModal = React.createClass({displayName: 'DefineGenderModal',
   },
 
   save(){
-  	console.log("set gender now");
   	var gender = this.refs.gender.getValue().trim();
-  	console.log("gender:"+gender);
+  	console.log("setting gender:"+gender+" "+this.props.horse.address);
 	if(gender != ''){
 		var h =  Horse.at(this.props.horse.address);
     	
