@@ -43,7 +43,7 @@ render: function() {
       var myMaleHorsesOption = this.props.myHorses.map(function (horse) {
         if(horse.genderCode == 0){
           return (
-            <option key={horse.index} value={horse.address}>{horse.name} {horse.gender}</option>
+            <option key={horse.index} value={horse.address}>{horse.address} ({horse.name})</option>
           );
         }
       });
@@ -51,7 +51,7 @@ render: function() {
       var myFemaleHorsesOption = this.props.myHorses.map(function (horse) {
         if(horse.genderCode == 1){
           return (
-            <option key={horse.index} value={horse.address}>{horse.name} {horse.gender}</option>
+            <option key={horse.index} value={horse.address}>{horse.address} ({horse.name})</option>
           );
         }
       });

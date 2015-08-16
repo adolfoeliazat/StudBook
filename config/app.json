@@ -17,6 +17,7 @@
       "javascripts/newHorseModal.jsx",
       "javascripts/newBornHorseModal.jsx",
       "javascripts/defineGenderModal.jsx",
+      "javascripts/changeAccountModal.jsx",
       "javascripts/moreInfoModal.jsx",
       "javascripts/transferModal.jsx",
       "javascripts/app.jsx"

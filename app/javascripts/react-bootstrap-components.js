@@ -1,4 +1,9 @@
 //React Bootstap components
+var Navbar = ReactBootstrap.Navbar;
+var Nav = ReactBootstrap.Nav;
+var CollapsibleNav = ReactBootstrap.CollapsibleNav;
+var DropdownButton = ReactBootstrap.DropdownButton;
+var MenuItem = ReactBootstrap.MenuItem;
 
 var ButtonToolbar = ReactBootstrap.ButtonToolbar;
 var ButtonGroup = ReactBootstrap.ButtonGroup;

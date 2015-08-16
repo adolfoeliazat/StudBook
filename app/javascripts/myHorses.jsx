@@ -1,16 +1,21 @@
 //myHorses
 var MyHorses = React.createClass({displayName: 'MyHorses',
-  getHorsesFromBlockchain: function(){
+
+  getHorsesFromBlockchain: function(account){
   	console.log("horseRegistryAddr:"+this.props.global.horseRegistryAddr);
-    console.log("account:"+this.props.global.account);
+    console.log("account:"+account);
 
-    if(this.props.global.account != undefined){
+    if(account == undefined){
+      account= this.props.global.account;
+    }
 
-		console.log("loading horses from registry for: "+this.props.global.account);    	
+    if(account != undefined){
+
+		console.log("loading horses from registry for: "+account);    	
     	
     	var hr =  HorseRegistry.at(this.props.global.horseRegistryAddr);
     	
-    	hr.getNumHorses.call(this.props.global.account)
+    	hr.getNumHorses.call(account)
 	    .then (function(_numHorses){
         var num=Number(_numHorses);
         this.setState({numHorses: num});
@@ -18,7 +23,7 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
 
         this.setState({horses: []});
         for(var i=0; i < num; i++){
-          this.getHorse(i);
+          this.getHorse(i,account);
         }
 	    }.bind(this))
 	    .catch(function(e) {
@@ -28,13 +33,13 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
     }
   },
 
-  getHorse: function(_index){
+  getHorse: function(_index,account){
     var hr =  HorseRegistry.at(this.props.global.horseRegistryAddr);
     var horse = {
       index: _index
     };
     
-    hr.getHorseByIndex.call(this.props.global.account,_index)
+    hr.getHorseByIndex.call(account,_index)
     .then ( function (_horseAddress){
         //console.log(_horseAddress);
         horse.address = _horseAddress;
@@ -67,6 +72,12 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
         console.log(e);
     })
     .done();
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    if(nextProps.account != undefined){
+      this.getHorsesFromBlockchain(nextProps.account)
+    }
   },
 
   getInitialState: function() {
