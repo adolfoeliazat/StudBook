@@ -11,6 +11,7 @@
       "javascripts/react-bootstrap.min.js",
       "javascripts/react-bootstrap-components.js",
       "javascripts/navigationBar.jsx",
+      "javascripts/horseTable.jsx",
       "javascripts/myHorses.jsx",
       "javascripts/newHorseModal.jsx",
       "javascripts/app.jsx"
