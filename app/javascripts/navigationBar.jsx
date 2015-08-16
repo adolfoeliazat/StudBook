@@ -10,7 +10,7 @@ var NavigationBar = React.createClass({displayName: 'NavigationBar',
                 </a>
             </div>
             <div className="collapse navbar-collapse">
-              <p className="navbar-text navbar-right">Working with account: {this.props.account}</p>
+              <p className="navbar-text navbar-right">Working with account: <EthAddr addr={this.props.account}/></p>
             </div>
        </div>
     </nav>

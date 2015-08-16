@@ -71,27 +71,31 @@ var MyHorses = React.createClass({displayName: 'MyHorses',
   getInitialState: function() {
   	return {
       numHorses     : 0,
-      horses        : [
-        {index: 1, address: '0x123', name: 'Gran Papa', gender: 0},
-        {index: 2, address: '0x223', name: 'Gran Mama', gender: 1}
-      ]
+      horses        : [],
+      selectedHorse : {}
     };
   },
   
-  rowClick: function(e){
-    console.log('row clicked pp');
+  openDefineGenderModal: function(selHorse) {
+    this.setState({selectedHorse: selHorse});
+    console.log("defining gender for: "+selHorse.name);
+    this.refs.defineGenderModal.open();
   },
 
-
   render: function() {
+    var header="My Horses registered at " + this.props.global.horseRegistryAddr;
     return (
-      <Panel header={"My Horses registered at " + this.props.global.horseRegistryAddr}>
+      <Panel header={ header }>
         <p>Horses registered here: {this.state.numHorses}</p>
-        <HorseTable data={this.state.horses} rowClick={this.rowClick}/>
+        <HorseTable data={this.state.horses} 
+              openDefineGenderModal={this.openDefineGenderModal}/>
         <ButtonToolbar>
           <Button bsStyle='primary' onClick={this.props.openNewHorseModal}>New Horse</Button>
           <Button bsStyle='primary'>Newborn Horse</Button>
         </ButtonToolbar>
+        <DefineGenderModal ref={'defineGenderModal'} 
+            horse={this.state.selectedHorse}
+            askForMyHorsesRefresh={this.getHorsesFromBlockchain}/>
       </Panel> 
     );
   }

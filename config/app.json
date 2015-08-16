@@ -10,10 +10,12 @@
       "javascripts/react.js",
       "javascripts/react-bootstrap.min.js",
       "javascripts/react-bootstrap-components.js",
+      "javascripts/ethAddr.jsx",
       "javascripts/navigationBar.jsx",
       "javascripts/horseTable.jsx",
       "javascripts/myHorses.jsx",
       "javascripts/newHorseModal.jsx",
+      "javascripts/defineGenderModal.jsx",
       "javascripts/app.jsx"
     ],
     "app.css": [
