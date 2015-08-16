@@ -5,16 +5,23 @@
     "app.js": [
       // Paths relative to "app" directory that should be
       // concatenated and processed during build.
-      "javascripts/app.js"
+      "javascripts/jquery-1.11.3.min.js",
+      "javascripts/bootstrap.min.js",
+      "javascripts/react.js",
+      "javascripts/react-bootstrap.min.js",
+      "javascripts/navigationBar.jsx",
+      "javascripts/myHorses.jsx",
+      "javascripts/app.jsx"
     ],
     "app.css": [
       // Paths relative to "app" directory that should be
       // concatenated and processed during build.
+      "stylesheets/bootstrap.min.css",
       "stylesheets/app.css"
-    ]
+    ],
     // Note: You can also include directories.
     // This will copy a static images directory to the build directory.
-    //"images/": "images/"
+    "fonts/": "fonts/"
   },
   "deploy": [
     // Names of contracts that should be deployed to the network.
