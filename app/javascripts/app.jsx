@@ -2,6 +2,7 @@
 
 var App  = React.createClass({displayName: 'App',
   getInitialState: function() {
+    //web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
     return {horseRegistryAddr: HorseRegistry.deployed_address, accounts: []};
   },
   componentDidMount: function() {
@@ -11,11 +12,13 @@ var App  = React.createClass({displayName: 'App',
   getWorkingAccount: function() {
   	web3.eth.getAccounts(function(error,result){
   		if(error == null){
+        console.log("accounts in app")
   			this.setState({account: result[0]});
   			this.setState({accounts: result});
-
   			this.refs.myHorses.getHorsesFromBlockchain(result[0]);
-  		}
+  		}else{
+        console.log("error in web3.eth.getAccounts:"+error);
+      }
   	}.bind(this));
   },
   openChangeAccountModal: function() {
