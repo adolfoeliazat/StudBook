@@ -57,7 +57,9 @@ var App  = React.createClass({displayName: 'App',
   }
 });
 
-React.render(
-  <App/>,
-  document.getElementById('body')
-);
+window.onload = function() {
+  React.render(
+    <App/>,
+    document.getElementById('body')
+  );
+};
