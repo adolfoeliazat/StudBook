@@ -58,6 +58,19 @@ var App  = React.createClass({displayName: 'App',
 });
 
 window.onload = function() {
+  // TODO: How much of this is actually needed?
+  web3.eth.getCoinbase(function(error, coinbase) {
+    if (error != null) {
+      alert("Couldn't get coinbase! Is your client running?");
+      return;
+    };
+
+    Pudding.defaults({
+      from: coinbase,
+      gas: 3141592
+    });
+  });
+
   React.render(
     <App/>,
     document.getElementById('body')
